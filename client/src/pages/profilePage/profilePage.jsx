@@ -1,8 +1,21 @@
+import { useNavigate } from "react-router-dom";
 import Chat from "../../components/chat/Chat";
 import List from "../../components/list/List";
+import apiRequest from "../../lib/apiRequest";
 import "./profilePage.scss";
 
 export default function ProfilePage() {
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      // eslint-disable-next-line no-unused-vars
+      const res = apiRequest.post("/auth/logout");
+      localStorage.removeItem("user");
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="profilePage">
       <div className="details">
@@ -19,23 +32,28 @@ export default function ProfilePage() {
                 alt=""
               />
             </span>
-            <span>Username: <b>John Doe</b></span>
-            <span>E-mail: <b>john@gmail.com</b></span>
+            <span>
+              Username: <b>John Doe</b>
+            </span>
+            <span>
+              E-mail: <b>john@gmail.com</b>
+            </span>
+            <button onClick={handleLogout}>Logout</button>
           </div>
           <div className="title">
             <h1>My List</h1>
             <button>Create New Post</button>
           </div>
-          <List/>
+          <List />
           <div className="title">
             <h1>Saved List</h1>
           </div>
-          <List/>
+          <List />
         </div>
       </div>
       <div className="chatContainer">
         <div className="wrapper">
-          <Chat/>
+          <Chat />
         </div>
       </div>
     </div>
