@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import "./navbar.scss";
 import { useState } from "react";
-
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 
@@ -36,8 +35,8 @@ export default function Navbar() {
           </div>
         ) : (
           <>
-            <a href="/">Sign in</a>
-            <a href="/" className="register">
+            <a href="/login">Sign in</a>
+            <a href="/register" className="register">
               Sign up
             </a>
           </>

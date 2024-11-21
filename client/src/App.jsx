@@ -2,7 +2,7 @@
 import HomePage from "./pages/homePage/homePage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ListPage from "./pages/listPage/listPage";
-import Layout from "./pages/layout/layout";
+import  {Layout, RequireAuth } from "./pages/layout/layout";
 import ProfilePage from "./pages/profilePage/profilePage";
 import SinglePage from "./pages/singlePage/singlePage";
 import Register from "./pages/register/register";
@@ -35,12 +35,19 @@ export default function App() {
           path: "/register",
           element: <Register />,
         },
+        
+      ],
+    },
+    {
+      path: "/",
+      element:<RequireAuth/>,
+      children:[
         {
           path: "/profile",
           element: <ProfilePage />,
         },
-      ],
-    },
+      ]
+    }
   ]);
   return <RouterProvider router={router} />;
 }
