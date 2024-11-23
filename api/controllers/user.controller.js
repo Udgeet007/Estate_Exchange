@@ -37,16 +37,17 @@ export const updateUser = async (req, res) => {
   try {
     if(password){
       updatedPassword = await bcrypt.hash(password,10);
+      // console.log(updatedPassword);
     }
     const updatedUser = await prisma.user.update({
       where: {id},
       data:{
         ...inputs,
-        ...bcrypt(updatedPassword && {password:updatedPassword}),
-        ...avatar(avatar && {avatar}),
+        ...(updatedPassword && {password:updatedPassword}),
+        ...(avatar && {avatar}),
       },
     });
-    const {password:userPassword, ...rest} = updateUser;
+    const {password:userPassword, ...rest} = updatedUser;
     // console.log(updatedUser);
     res.status(200).json(rest);
   } catch (err) {
