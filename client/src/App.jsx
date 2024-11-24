@@ -10,6 +10,7 @@ import Register from "./pages/register/register";
 import Login from "./pages/login/login";
 import ProfileUpdatePage from "./pages/profileUpdatePage/profileUpdatePage";
 import NewPostPage from "./pages/newHomePage/newPostPage";
+import { singlePageLoader } from "./lib/loaders";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -28,6 +29,7 @@ export default function App() {
         {
           path: "/:id",
           element: <SinglePage />,
+          loader: singlePageLoader,
         },
         
         {
