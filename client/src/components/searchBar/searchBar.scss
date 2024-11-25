@@ -2,6 +2,7 @@
 
 .searchBar {
   .type {
+
     // @include small_Screen{
     //   margin-bottom: 5px;
     // }
@@ -24,7 +25,7 @@
         border-top-left-radius: 5px;
         border-right: none;
 
-        @include small_Screen{
+        @include small_Screen {
           // border-bottom: 1px solid #999;
         }
       }
@@ -43,7 +44,7 @@
     height: 64px;
     gap: 5px;
 
-    @include small_Screen{
+    @include small_Screen {
       flex-direction: column;
       border: none;
     }
@@ -61,39 +62,53 @@
           width: 140px;
         }
       }
-      @include medium_Screen{
+
+      @include medium_Screen {
         width: 200px;
+
         &:nth-child(2),
-        &:nth-child(3){
+        &:nth-child(3) {
           width: auto;
         }
       }
 
-      @include small_Screen{
+      @include small_Screen {
         width: auto;
+
         &:nth-child(2),
-        &:nth-child(3){
+        &:nth-child(3) {
           width: auto;
         }
+
         padding: 20px;
         border: 1px solid #999;
       }
     }
 
-    button {
-      border: none;
-      cursor: pointer;
-      background-color: #fece51;
+    a {
       flex: 1;
+      background-color: #fece51;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      @include small_Screen{
-        padding: 10px;
-      }
-      img {
-        width: 24px;
-        height: 24px;
-      }
+      button {
+        border: none;
+        cursor: pointer;
+        background-color: #fece51;
 
+
+        @include small_Screen {
+          padding: 10px;
+        }
+
+        img {
+          width: 24px;
+          height: 24px;
+        }
+
+      }
     }
+
   }
 }
