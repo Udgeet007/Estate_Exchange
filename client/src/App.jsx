@@ -10,7 +10,7 @@ import Register from "./pages/register/register";
 import Login from "./pages/login/login";
 import ProfileUpdatePage from "./pages/profileUpdatePage/profileUpdatePage";
 import NewPostPage from "./pages/newHomePage/newPostPage";
-import { listPageLoader, singlePageLoader } from "./lib/loaders";
+import { listPageLoader, profilePageLoader, singlePageLoader } from "./lib/loaders";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -51,6 +51,7 @@ export default function App() {
         {
           path: "/profile",
           element: <ProfilePage />,
+          loader:profilePageLoader
         },
         {
           path: "/profile/update",
