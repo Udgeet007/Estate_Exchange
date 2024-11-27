@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./chat.scss";
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
@@ -10,6 +10,12 @@ export default function Chat({ chats }) {
   const [chat, setChat] = useState(null);
   const { currentUser } = useContext(AuthContext);
   const { socket } = useContext(SocketContext);
+
+  const messageEndRef = useRef();
+
+  useEffect(()=>{
+    messageEndRef.current?.scrollIntoView({behavior:"smooth"});
+  },[chat])
 
   const handleOpenChat = async (id, receiver) => {
     try {
@@ -117,6 +123,7 @@ export default function Chat({ chats }) {
               </div>
             ))}
           </div>
+          <div ref={messageEndRef}></div>
           <form onSubmit={handleSubmit} className="bottom">
             <textarea name="text"></textarea>
             <button>Send</button>
